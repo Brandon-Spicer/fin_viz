@@ -1,10 +1,11 @@
 TODO:
 
 - Get closing price [DONE]
-- Make csv with tickers and share amounts
-- Put csv into dataframe
-- Get prices from tickers
-- Calculate equity value
+- Make csv with tickers and share amounts [DONE]
+- Put csv into dataframe [DONE]
+- Get prices from tickers [DONE]
+- Calculate equity value [DONE]
+- Format nicely
 - Make treemap with squarify
 - Get individual and ira portfolios
 - Combine portfolios for total
@@ -16,3 +17,4 @@ EXTRA:
 - Get after hours price
 - Cost basis
 - time vs money weighted return?
+- tickers for options?
