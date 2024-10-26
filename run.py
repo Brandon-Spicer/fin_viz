@@ -4,6 +4,7 @@ import pandas as pd
 # Get portfolio csv and put into dataframe
 
 df = pd.read_csv('portfolio.csv')
+df_ira = pd.read_csv('portfolio_ira.csv')
 
 # Function to fetch the current stock price using yfinance
 def get_stock_price(ticker):
@@ -11,15 +12,23 @@ def get_stock_price(ticker):
     price = stock.history(period="1d")['Close'].iloc[-1]  # Get the latest closing price
     return price
 
-# Create a new column 'EquityValue' by fetching the stock price and multiplying by share count
-df['Equity'] = df.apply(lambda row: get_stock_price(row['Ticker']) * row['Shares'], axis=1)
-df['Equity'] = round(df['Equity'], 2)
+# Create a new column 'Equity' by fetching the stock price and multiplying by share count
+def add_equity_column(df):
+    df['Equity'] = df.apply(lambda row: get_stock_price(row['Ticker']) * row['Shares'], axis=1)
+    df['Equity'] = round(df['Equity'], 2)
+
+# Print total equity
+def print_equity(df):
+    print(f'Total: ${round(df["Equity"].sum(), 2)}')
+
+add_equity_column(df)
+add_equity_column(df_ira)
 
 print(df)
+print_equity(df)
 
-s = df['Equity'].sum()
-print(f'Total: ${round(s, 2)}')
-
+print(df_ira)
+print_equity(df_ira)
 
 
 
